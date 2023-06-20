@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.event-form-container {
+  padding: 16px;
+  color: #00e5ff;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.form {
+  position: relative;
+  border-radius: 10px;
+  padding: 16px;
+  width: 600px;
+  margin: 0 auto;
+  color: #040404;
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 500px;
+}
+
+.form::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 1px solid;
+  border-image-slice: 1;
+  animation: borderGradient 15s ease infinite;
+  border-radius: 10px;
+}
+
+
+
+.event-form-heading {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.add-event-button {
+  margin-top: 16px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  color: #ffffff;
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+.added-events-heading {
+  margin: 24px;
+  color: #00e5ff;
+  text-align: center;
+}
+.added-event {
+  content: '';
+  padding: 20px;
+  border: 1px solid;
+  border-image-slice: 1;
+  animation: borderGradient 15s ease infinite;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px; 
+}
+
+
+@media (max-width: 600px) {
+  .event-form-container {
+    padding: 12px;
+  }
+  .event-form-heading {
+    font-size: 24px;
+  }
+  .added-event {
+    font-size: 14px;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes borderGradient {
+  0% {
+    border-image-source: linear-gradient(
+      to right,
+      #ee7752,
+      #e73c7e,
+      #23a6d5,
+      #23d5ab
+    );
+  }
+  50% {
+    border-image-source: linear-gradient(
+      to right,
+      #23d5ab,
+      #ee7752,
+      #e73c7e,
+      #23a6d5
+    );
+  }
+  100% {
+    border-image-source: linear-gradient(
+      to right,
+      #23a6d5,
+      #23d5ab,
+      #ee7752,
+      #e73c7e
+    );
+  }
+}
