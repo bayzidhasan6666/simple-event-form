@@ -113,100 +113,117 @@ const EventForm = () => {
   };
 
   return (
-    <div className="event-form-container">
+    <>
+      {' '}
       <h2 className="event-form-heading">Event Form</h2>
-      <Grid className="form" container spacing={2}>
-        <Grid item xs={12}>
-          <TextField
-            label="Event Name"
-            value={eventName}
-            onChange={handleEventNameChange}
-            fullWidth
-            required
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            label="Start Date"
-            type="date"
-            value={startDate}
-            onChange={handleStartDateChange}
-            fullWidth
-            InputLabelProps={{ shrink: true }}
-            required
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            label="End Date"
-            type="date"
-            value={endDate}
-            onChange={handleEndDateChange}
-            fullWidth
-            InputLabelProps={{ shrink: true }}
-            required
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControl fullWidth required>
-            <InputLabel>Recurring Days</InputLabel>
-            <Select
-              multiple
-              value={recurringDays}
-              onChange={handleRecurringDaysChange}
-              renderValue={(selected) => selected.join(', ')}
+      <div className="event-form-container">
+        <Grid className="form" container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              label="Event Name"
+              value={eventName}
+              onChange={handleEventNameChange}
+              fullWidth
+              required
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Start Date"
+              type="date"
+              value={startDate}
+              onChange={handleStartDateChange}
+              fullWidth
+              InputLabelProps={{ shrink: true }}
+              required
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="End Date"
+              type="date"
+              value={endDate}
+              onChange={handleEndDateChange}
+              fullWidth
+              InputLabelProps={{ shrink: true }}
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl fullWidth required>
+              <InputLabel>Recurring Days</InputLabel>
+              <Select
+                multiple
+                value={recurringDays}
+                onChange={handleRecurringDaysChange}
+                renderValue={(selected) => selected.join(', ')}
+              >
+                <MenuItem value="Monday">Monday</MenuItem>
+                <MenuItem value="Tuesday">Tuesday</MenuItem>
+                <MenuItem value="Wednesday">Wednesday</MenuItem>
+                <MenuItem value="Thursday">Thursday</MenuItem>
+                <MenuItem value="Friday">Friday</MenuItem>
+                <MenuItem value="Saturday">Saturday</MenuItem>
+                <MenuItem value="Sunday">Sunday</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleAddEvent}
+              className="add-event-button"
             >
-              <MenuItem value="Monday">Monday</MenuItem>
-              <MenuItem value="Tuesday">Tuesday</MenuItem>
-              <MenuItem value="Wednesday">Wednesday</MenuItem>
-              <MenuItem value="Thursday">Thursday</MenuItem>
-              <MenuItem value="Friday">Friday</MenuItem>
-              <MenuItem value="Saturday">Saturday</MenuItem>
-              <MenuItem value="Sunday">Sunday</MenuItem>
-            </Select>
-          </FormControl>
+              Add Event
+            </Button>
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleAddEvent}
-            className="add-event-button"
-          >
-            Add Event
-          </Button>
-        </Grid>
-      </Grid>
-
-      <h3 className="added-events-heading">Added Events:</h3>
-      {addedEvents.map((event, index) => (
-        <div key={index} className="added-event">
-          <div>
-            <p>
-              <strong>Event Name:</strong> {event.eventName}
-            </p>
-            <p>
-              <strong>Start Date:</strong> {event.startDate}
-            </p>
+        <h3 className="added-events-heading">
+          Added Events : {addedEvents.length}
+        </h3>{' '}
+        {addedEvents.length === 0 && (
+          <div className="no-event">
+            <img
+              width={200}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBIGEqOG__ywBgciY6m16TxsBzf8-SbJbcHQ&usqp=CAU"
+              alt=""
+            />{' '}
+            <p> Please add an Events</p>
           </div>
-          <div>
-            <p>
-              <strong>End Date:</strong> {event.endDate}
-            </p>
-            <p>
-              <strong>Recurring Days:</strong> {event.recurringDays.join(', ')}
-            </p>
-          </div>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => handleDeleteEvent(index)}
-          >
-            Delete
-          </Button>
+        )}
+        <div className="added-event-container">
+          {addedEvents.map((event, index) => (
+            <div key={index} className="added-event">
+              <div className="">
+                <p>
+                  <strong>Event Name:</strong> {event.eventName}
+                </p>
+                <p>
+                  <strong>Start Date:</strong> {event.startDate}
+                </p>
+              </div>
+              <div>
+                <p>
+                  <strong>End Date:</strong> {event.endDate}
+                </p>
+                <p>
+                  <strong>Recurring Days:</strong>{' '}
+                  {event.recurringDays.join(', ')}
+                </p>
+              </div>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => handleDeleteEvent(index)}
+              >
+                Delete
+              </Button>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </>
   );
 };
 

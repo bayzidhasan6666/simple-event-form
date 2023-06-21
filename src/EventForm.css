@@ -1,26 +1,30 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
 }
 .event-form-container {
-  padding: 16px;
-  color: #00e5ff;
   width: 90%;
+  padding: 10px;
+  color: #54ccfb;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  border:2px,solid, #0056b3;
 }
 
 .form {
   position: relative;
   border-radius: 10px;
   padding: 16px;
-  width: 600px;
+  width: 500px;
   margin: 0 auto;
   color: #040404;
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 500px;
+  font-size: 15px;
 }
 
 .form::before {
@@ -33,14 +37,23 @@
   border: 1px solid;
   border-image-slice: 1;
   animation: borderGradient 15s ease infinite;
-  border-radius: 10px;
 }
 
-
-
 .event-form-heading {
-  text-align: center;
-  margin-bottom: 24px;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  color: #ffffff;
+  width: fit-content;
+  display: flex;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 
 .add-event-button {
@@ -55,23 +68,55 @@
 }
 
 .added-events-heading {
-  margin: 24px;
-  color: #00e5ff;
-  text-align: center;
+   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  color: #ffffff;
+  width: fit-content;
+  display: flex;
+  margin: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
+.added-event-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .added-event {
   content: '';
   padding: 20px;
   border: 1px solid;
   border-image-slice: 1;
   animation: borderGradient 15s ease infinite;
-  border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
+  height: 150px;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.no-event {
+  color: #ee7752;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
+@media (max-width: 767px) {
+  .added-event {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+}
 
 @media (max-width: 600px) {
   .event-form-container {
